@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,17 +16,33 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        String actual = hamletParser.getHamletData();
+        hamletText = hamletParser.replaceHamlet(hamletText);
+
+        Assert.assertNotEquals(hamletText, actual);
     }
 
     @Test
     public void testChangeHoratioToTariq() {
+        String actual = hamletParser.getHamletData();
+        hamletText = hamletParser.replaceHoratio(hamletText);
+        
+        Assert.assertNotEquals(hamletText, actual);
     }
 
     @Test
     public void testFindHoratio() {
+        hamletText = hamletParser.replaceHoratio(hamletText);
+        Boolean check = hamletText.contains("HORATIO");
+
+        Assert.assertFalse(check);
     }
 
     @Test
     public void testFindHamlet() {
+        hamletText = hamletParser.replaceHamlet(hamletText);
+        Boolean check = hamletText.contains("HAMLET");
+
+        Assert.assertFalse(check);
     }
 }
